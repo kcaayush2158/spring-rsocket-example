@@ -6,6 +6,7 @@ import io.rsocket.transport.netty.client.TcpClientTransport;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.messaging.rsocket.RSocketRequester;
 import reactor.core.publisher.Flux;
@@ -16,6 +17,7 @@ import reactor.test.StepVerifier;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class SpringRsocketApplicationTests {
     private RSocketRequester rSocketRequester;
+    @Autowired
     private RSocketRequester.Builder builder;
 
     @BeforeAll
