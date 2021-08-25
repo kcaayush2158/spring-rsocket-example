@@ -1,15 +1,13 @@
 package com.example.springrsocket.dto;
 
-public class ChatResponseDto {
+public class ChartResponseDto {
     private int input;
     private int output;
 
-    public ChatResponseDto(){
+    public ChartResponseDto(){
 
     }
-
-
-    public ChatResponseDto(int input, int output){
+    public ChartResponseDto(int input, int output){
         this.input = input;
         this.output=output;
     }

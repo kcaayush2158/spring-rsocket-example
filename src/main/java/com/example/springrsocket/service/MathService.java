@@ -1,6 +1,6 @@
 package com.example.springrsocket.service;
 
-import com.example.springrsocket.dto.ChatResponseDto;
+import com.example.springrsocket.dto.ChartResponseDto;
 import com.example.springrsocket.dto.ComputationRequestDto;
 import com.example.springrsocket.dto.ComputationResponseDto;
 import org.springframework.stereotype.Service;
@@ -27,10 +27,10 @@ public class MathService {
             .map(i -> new  ComputationResponseDto(computationRequestDtoMono.getInput(), computationRequestDtoMono.getInput()*i));
 
     }
-    public Flux<ChatResponseDto> chartStream(Flux<ComputationRequestDto> computationRequestDtoFlux){
+    public Flux<ChartResponseDto> chartStream(Flux<ComputationRequestDto> computationRequestDtoFlux){
         return computationRequestDtoFlux
             .map(ComputationRequestDto::getInput)
-            .map(i -> new ChatResponseDto(i ,(i*i)+1));
+            .map(i -> new ChartResponseDto(i ,(i*i)+1));
 
     }
 }
