@@ -11,9 +11,7 @@ public class MathVariableController {
 
     @MessageMapping("print.{input}")
     public Mono<Void> print(@DestinationVariable int input){
-        System.out.print("Received : " + input);
+        System.out.println("Received : " + input);
         return Mono.empty();
     }
-
-
 }

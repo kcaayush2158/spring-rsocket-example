@@ -10,21 +10,19 @@ import java.time.Duration;
 @Controller
 public class BatchJobController {
 
-    @MessageMapping("batch.job.request ")
-    public Mono<Void> submitJob(Mono<Integer> integerMono , RSocketRequester rSocketRequester){
-        this.process(integerMono,rSocketRequester);
+    @MessageMapping("batch.job.request")
+    public Mono<Void> submitJob(Mono<Integer> integerMono, RSocketRequester rSocketRequester){
+        this.process(integerMono, rSocketRequester);
         return Mono.empty();
     }
 
-    private void process(Mono<Integer> integerMono,RSocketRequester rSocketRequester){
+    private void process(Mono<Integer> integerMono, RSocketRequester rSocketRequester){
         integerMono
                 .delayElement(Duration.ofSeconds(10))
-            .map(i -> i*i*i)
-            .flatMap(i -> rSocketRequester.route("batch.job.request").data(i).send())
-            .subscribe();
-
-
-
+                .map(i -> i * i * i)
+                .flatMap(i -> rSocketRequester.route("batch.job.response").data(i).send())
+                .subscribe();
     }
+
 
 }
